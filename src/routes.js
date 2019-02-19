@@ -15,7 +15,7 @@ export default new VueRouter ({
         {path: '/new', component: NewAd},
         {path: '/registration', component: Registration},
         {path: '/list', component: AdList},
-        {path: '/ad:id', component: Ad},
+        {path: '/ad/:id', component: Ad, props: true }, //props: true will send ID as param for component
     ],
     mode: 'history'
 })

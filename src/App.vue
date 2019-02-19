@@ -18,10 +18,12 @@ export default {
   components: {
     Header
   },
-  data () {
-    return {
-      //
-    }
+mounted() {
+  this.$http.get('http://localhost:3000/user').then(resp => {
+    setTimeout(() => {
+      this.$store.dispatch('takeUser', resp.body[0]);
+    }, 2000);
+  })
   }
 }
 </script>

@@ -34,7 +34,7 @@
         </v-layout>
         <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
-                <img src="" height="200px">
+                <img src="https://static3.cbrimages.com/wordpress/wp-content/uploads/2018/05/deadpool-2-thumbs-up-header.jpg" height="200px">
             </v-flex>
         </v-layout>
         <v-layout row>
@@ -49,7 +49,8 @@
         <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
                 <v-btn
-                        :disabled="!valid"
+                        :loading="loading"
+                        :disabled="!valid || loading"
                         color="blue-grey"
                         class="primary"
                 @click="createAd">
@@ -66,14 +67,27 @@
             return {
                 title: '',
                 description: '',
+                src: '',
                 promo: false,
                 valid: false
+            }
+        },
+        computed: {
+            loading() {
+                return this.$store.getters.loading;
             }
         },
          methods: {
             createAd() {
                 if(this.$refs.form.validate()) {
-                    const ad = {title: this.title, description: this.description, promo: this.promo};
+                    const ad = {title: this.title, description: this.description, promo: this.promo, src: 'https://static3.cbrimages.com/wordpress/wp-content/uploads/2018/05/deadpool-2-thumbs-up-header.jpg'};
+                    this.$store.dispatch('setLoading', true);
+                    setTimeout(() => {
+                        this.$store.dispatch('createAd', ad); // will call NEW ACTION
+                        this.$store.dispatch('setLoading', false);
+                        this.promo = false;
+                        this.$refs.form.reset();
+                    }, 1000);
                 }
             }
          }

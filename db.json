@@ -1,0 +1,9 @@
+{
+  "user": [
+    { "id": 1, "email": "serhii.rozdobudko@gmail.com", "pasword": "1313" }
+  ],
+  "comments": [
+    { "id": 1, "body": "some comment", "postId": 1 }
+  ],
+  "profile": { "name": "typicode" }
+}
