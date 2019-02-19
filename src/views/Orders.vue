@@ -8,15 +8,18 @@
                 >
                     <v-subheader>Orders list:</v-subheader>
 
-                    <v-list-tile @click="true">
+                    <v-list-tile v-for="(item, i) of ads" :key="i">
                         <v-list-tile-action>
-                            <v-checkbox v-model="notifications"></v-checkbox>
+                            <v-checkbox @change="markDone(item)"></v-checkbox>
                         </v-list-tile-action>
 
-                        <v-list-tile-content @click="true">
-                            <v-list-tile-title>Notifications</v-list-tile-title>
-                            <v-list-tile-sub-title>Allow notifications</v-list-tile-sub-title>
+                        <v-list-tile-content>
+                            <v-list-tile-title>{{item.name}}</v-list-tile-title>
+                            <v-list-tile-sub-title>{{item.phone}}</v-list-tile-sub-title>
                         </v-list-tile-content>
+                        <v-list-tile-action>
+                            <v-btn text :to="'/ad/'+ item.adId"> Open</v-btn>
+                        </v-list-tile-action>
                     </v-list-tile>
                 </v-list>
             </v-flex>
@@ -28,7 +31,24 @@
     export default {
         data() {
             return {
-
+                ads: [{
+                    id: '123123',
+                    name: 'Boris',
+                    phone: '634755505',
+                    adId: '321',
+                    done: false
+                },{
+                    id: '6542',
+                    name: 'Oleg',
+                    phone: '686033303',
+                    adId: '132',
+                    done: false
+                }]
+            }
+        },
+        methods: {
+            markDone(item) {
+                item.done = true;
             }
         }
     }

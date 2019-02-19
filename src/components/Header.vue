@@ -43,7 +43,7 @@
         links: [
             {title: 'Home', icon: 'home', url: '/'},
             {title: 'Login', icon: 'lock', url: '/login'},
-            {title: 'New_ad', icon: 'note_add', url: '/new'},
+            {title: 'New ad', icon: 'note_add', url: '/new'},
             {title: 'My ads', icon: 'list', url: '/list'},
             {title: 'Orders', icon: 'bookmark_border', url: '/orders'},
             {title: 'Registration', icon: 'face', url: '/registration'}
