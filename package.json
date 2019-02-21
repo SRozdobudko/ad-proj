@@ -9,7 +9,9 @@
     "db-json": "json-server --watch db.json"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "vue": "^2.5.21",
+    "vue-axios": "^2.1.4",
     "vue-resource": "^1.5.1",
     "vue-router": "^3.0.2",
     "vuetify": "^1.3.0",

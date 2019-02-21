@@ -2,6 +2,7 @@
   <v-app>
     <Header></Header>
     <v-content>
+      <v-progress-linear v-if="loading" :indeterminate="true"></v-progress-linear>
       <!--<v-container fluid>-->
         <v-fade-transition mode="out-in">
           <router-view></router-view>
@@ -19,11 +20,12 @@ export default {
     Header
   },
 mounted() {
-  this.$http.get('http://localhost:3000/user').then(resp => {
-    setTimeout(() => {
-      this.$store.dispatch('takeUser', resp.body[0]);
-    }, 2000);
-  })
+      this.$store.dispatch('getUser');
+  },
+  computed: {
+    loading() {
+      return this.$store.getters.loading;
+    }
   }
 }
 </script>
